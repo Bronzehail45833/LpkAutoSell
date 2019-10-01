@@ -33,9 +33,9 @@ class Main extends PluginBase implements Listener
 		$this->mode[$player] = "off";
 	}
     public function onCommand(CommandSender $sender, Command $cmd, string $label, array $args): bool{
-       if (strtolower($cmd->getName()) == "autosell") {
+       if (strtolower($cmd->getName()) == "as") {
            if(!isset($args[0])){
-               $sender->sendMessage("§l§b[§6AutoSell§b]§a Usage: /autosell <on|off>");
+               $sender->sendMessage("§l§b[§6AutoSell§b]§a Usage: /as <on|off>");
                return false;
            }
            switch ($args[0]) {
@@ -49,7 +49,7 @@ class Main extends PluginBase implements Listener
                    $this->mode[$sender->getName()] = "off";
 				   break;
                default :
-                   $sender->sendMessage("§l§b[§6AutoSell§b]§a Usage: /autosell <on|off>");
+                   $sender->sendMessage("§l§b[§6AutoSell§b]§a Usage: /as <on|off>");
                    break;
            }
        }
@@ -77,7 +77,7 @@ class Main extends PluginBase implements Listener
 		}
 	}
     public function onQuit(PlayerQuitEvent $e){
-       $a = "autosell off";
+       $a = "as off";
        $this->getServer()->dispatchCommand($e->getPlayer(),$a);
     }
 }
